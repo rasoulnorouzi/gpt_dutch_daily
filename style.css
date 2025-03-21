@@ -1,0 +1,37 @@
+body {
+  font-family: sans-serif;
+  line-height: 1.8;
+  background: #f9f9f9;
+  color: #333;
+  padding: 2rem;
+  direction: rtl;
+}
+
+h1, h2, h3 {
+  color: #007acc;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.2em;
+}
+
+.markdown-body {
+  max-width: 800px;
+  margin: auto;
+  background: white;
+  padding: 2rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  border-radius: 8px;
+}
+
+strong {
+  color: #d6336c;
+}
+
+code {
+  background: #f2f2f2;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+a {
+  color: #0056b3;
+}
