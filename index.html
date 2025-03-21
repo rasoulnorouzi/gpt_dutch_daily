@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>Dutch Daily Course</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="markdown-body">
+    <!-- Markdown gets rendered here -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+      fetch('README.md')
+        .then(res => res.text())
+        .then(md => {
+          document.querySelector('.markdown-body').innerHTML = marked.parse(md);
+        });
+    </script>
+  </div>
+</body>
+</html>
