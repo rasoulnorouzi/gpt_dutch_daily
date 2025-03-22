@@ -6,40 +6,43 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Mobile Toggle Button -->
+
+  <!-- Mobile Menu Toggle -->
   <button class="menu-toggle" onclick="toggleSidebar()">☰ منو</button>
 
-  <!-- Layout Container -->
-  <div class="container">
-    <div class="sidebar" id="sidebar">
-      <h3>📌 لیست درس‌ها</h3>
-      <ul id="sidebar-links"></ul>
-    </div>
-
-    <div class="markdown-body">
-      <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-      <script>
-        fetch('README.md')
-          .then(res => res.text())
-          .then(md => {
-            document.querySelector('.markdown-body').innerHTML = marked.parse(md);
-
-            const sidebar = document.getElementById("sidebar-links");
-            document.querySelectorAll("h3").forEach((heading, index) => {
-              const title = heading.innerText.trim();
-              const id = "lesson-" + index;
-              heading.id = id;
-              const li = document.createElement("li");
-              li.innerHTML = `<a href="#${id}">${title}</a>`;
-              sidebar.appendChild(li);
-            });
-          });
-
-        function toggleSidebar() {
-          document.getElementById("sidebar").classList.toggle("show");
-        }
-      </script>
-    </div>
+  <!-- Sidebar for Dynamic Navigation -->
+  <div class="sidebar" id="sidebar">
+    <h3>📌 لیست درس‌ها</h3>
+    <ul id="sidebar-links"></ul>
   </div>
+
+  <!-- Main Content Area -->
+  <div class="markdown-body">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+      fetch('README.md')
+        .then(res => res.text())
+        .then(md => {
+          document.querySelector('.markdown-body').innerHTML = marked.parse(md);
+
+          // Create sidebar links from all h3 elements
+          const sidebar = document.getElementById("sidebar-links");
+          document.querySelectorAll("h3").forEach((heading, index) => {
+            const title = heading.innerText.trim();
+            const id = "lesson-" + index;
+            heading.id = id;
+            const li = document.createElement("li");
+            li.innerHTML = `<a href="#${id}">${title}</a>`;
+            sidebar.appendChild(li);
+          });
+        });
+
+      // Sidebar Toggle Function for Mobile
+      function toggleSidebar() {
+        document.getElementById("sidebar").classList.toggle("show");
+      }
+    </script>
+  </div>
+
 </body>
 </html>
