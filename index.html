@@ -6,11 +6,17 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="sidebar">
+
+  <!-- Mobile Menu Toggle -->
+  <button class="menu-toggle" onclick="toggleSidebar()">☰ منو</button>
+
+  <!-- Sidebar for Dynamic Navigation -->
+  <div class="sidebar" id="sidebar">
     <h3>📌 لیست درس‌ها</h3>
     <ul id="sidebar-links"></ul>
   </div>
 
+  <!-- Main Content Area -->
   <div class="markdown-body">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script>
@@ -30,7 +36,13 @@
             sidebar.appendChild(li);
           });
         });
+
+      // Sidebar Toggle Function for Mobile
+      function toggleSidebar() {
+        document.getElementById("sidebar").classList.toggle("show");
+      }
     </script>
   </div>
+
 </body>
 </html>

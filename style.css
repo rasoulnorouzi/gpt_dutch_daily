@@ -26,8 +26,9 @@ body {
   border-left: 1px solid #e0e0e0;
   box-shadow: -2px 0 8px rgba(0, 0, 0, 0.05);
   flex-shrink: 0;
-  z-index: 10;
+  z-index: 1000;
   border-radius: 0 10px 10px 0;
+  transition: transform 0.3s ease-in-out;
 }
 
 .sidebar h3 {
@@ -76,32 +77,48 @@ body {
   flex-grow: 1;
 }
 
-/* === Headings === */
-h1, h2, h3, h4 {
-  color: #007acc;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 4px;
-}
+/* === Mobile Responsive Design === */
+@media (max-width: 1024px) {
+  body {
+    flex-direction: column;
+  }
 
-h3 {
-  margin-top: 60px;
-}
+  .sidebar {
+    position: fixed;
+    right: -250px;
+    width: 250px;
+    height: 100%;
+    background: white;
+    border-left: none;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: right 0.3s ease-in-out;
+    z-index: 1000;
+  }
 
-/* === Lists, Code, Emphasis === */
-ul, ol {
-  padding-right: 20px;
-}
+  .sidebar.show {
+    right: 0;
+  }
 
-strong {
-  color: #d6336c;
-}
+  .menu-toggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: #007acc;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    z-index: 1100;
+  }
 
-code {
-  background: #f2f2f2;
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-family: monospace;
-  font-size: 90%;
+  .markdown-body {
+    padding: 20px;
+    max-width: 100%;
+    margin: 20px auto;
+  }
 }
 
 /* === Scrollbar (for sidebar only) === */
