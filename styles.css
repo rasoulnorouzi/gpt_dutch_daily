@@ -1,0 +1,85 @@
+// ...existing code...
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        width: 100%;
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 24px;
+    }
+    
+    .word-display, .translation-display {
+        font-size: 18px;
+        padding: 10px;
+    }
+    
+    .container-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    button {
+        width: 100%;
+        padding: 12px;
+        margin: 5px 0;
+    }
+    
+    .flashcard-container {
+        max-width: 100%;
+    }
+    
+    .flashcard {
+        width: 100%;
+        min-height: 150px;
+    }
+    
+    .progress-container {
+        width: 100%;
+    }
+    
+    .settings-panel {
+        width: 90%;
+        max-width: 100%;
+    }
+    
+    .favourites-panel {
+        width: 90%;
+        max-width: 100%;
+    }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 20px;
+    }
+    
+    .word-display, .translation-display {
+        font-size: 16px;
+        padding: 8px;
+    }
+    
+    button {
+        font-size: 14px;
+        padding: 10px;
+    }
+    
+    .container {
+        padding: 10px;
+    }
+}
+
+/* Ensure buttons are touch-friendly */
+@media (hover: none) and (pointer: coarse) {
+    button, .settings-icon, .favourites-icon {
+        min-height: 44px;
+        min-width: 44px;
+    }
+}
