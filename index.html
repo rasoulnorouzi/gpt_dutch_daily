@@ -6,32 +6,25 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!-- Sidebar for Dynamic Navigation -->
   <div class="sidebar">
     <h3>📌 لیست درس‌ها</h3>
     <ul id="sidebar-links"></ul>
   </div>
 
-  <!-- Main Content Area -->
   <div class="markdown-body">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script>
-      // Fetch the README.md file
       fetch('README.md')
         .then(res => res.text())
         .then(md => {
-          // Convert Markdown to HTML
           document.querySelector('.markdown-body').innerHTML = marked.parse(md);
 
-          // Extract lesson titles (### headings)
+          // Create sidebar links from all h3 elements
           const sidebar = document.getElementById("sidebar-links");
           document.querySelectorAll("h3").forEach((heading, index) => {
             const title = heading.innerText.trim();
             const id = "lesson-" + index;
-            heading.id = id; // Assign an ID to each lesson title
-            
-            // Create Sidebar Links
+            heading.id = id;
             const li = document.createElement("li");
             li.innerHTML = `<a href="#${id}">${title}</a>`;
             sidebar.appendChild(li);
@@ -39,6 +32,5 @@
         });
     </script>
   </div>
-
 </body>
 </html>
