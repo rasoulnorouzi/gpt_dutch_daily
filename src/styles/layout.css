@@ -1,0 +1,20 @@
+// ...existing code...
+.row, .flex-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+}
+
+.col, .flex-item {
+  flex: 1;
+  min-width: 100%;
+}
+
+@media (min-width: 768px) {
+  .col, .flex-item {
+    min-width: 0;
+  }
+}
+// ...existing code...
