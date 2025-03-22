@@ -7,31 +7,48 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="sidebar">
-    <h3>📌 لیست درس‌ها</h3>
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-header">
+      <h3>📌 لیست درس‌ها</h3>
+      <button id="close-sidebar" class="sidebar-toggle">×</button>
+    </div>
     <ul id="sidebar-links"></ul>
   </div>
 
-  <div class="markdown-body">
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script>
-      fetch('README.md')
-        .then(res => res.text())
-        .then(md => {
-          document.querySelector('.markdown-body').innerHTML = marked.parse(md);
+  <div class="content">
+    <button id="open-sidebar" class="sidebar-toggle">☰</button>
+    <div class="markdown-body">
+      <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+      <script>
+        fetch('README.md')
+          .then(res => res.text())
+          .then(md => {
+            document.querySelector('.markdown-body').innerHTML = marked.parse(md);
 
-          // Create sidebar links from all h3 elements
-          const sidebar = document.getElementById("sidebar-links");
-          document.querySelectorAll("h3").forEach((heading, index) => {
-            const title = heading.innerText.trim();
-            const id = "lesson-" + index;
-            heading.id = id;
-            const li = document.createElement("li");
-            li.innerHTML = `<a href="#${id}">${title}</a>`;
-            sidebar.appendChild(li);
+            // Create sidebar links from all h3 elements
+            const sidebar = document.getElementById("sidebar-links");
+            document.querySelectorAll("h3").forEach((heading, index) => {
+              const title = heading.innerText.trim();
+              const id = "lesson-" + index;
+              heading.id = id;
+              const li = document.createElement("li");
+              li.innerHTML = `<a href="#${id}">${title}</a>`;
+              sidebar.appendChild(li);
+            });
           });
+
+        // Toggle sidebar functionality
+        document.getElementById('close-sidebar').addEventListener('click', () => {
+          document.getElementById('sidebar').classList.remove('open');
+          document.body.classList.remove('sidebar-active');
         });
-    </script>
+
+        document.getElementById('open-sidebar').addEventListener('click', () => {
+          document.getElementById('sidebar').classList.add('open');
+          document.body.classList.add('sidebar-active');
+        });
+      </script>
+    </div>
   </div>
 </body>
 </html>
