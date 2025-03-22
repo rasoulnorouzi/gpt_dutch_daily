@@ -6,14 +6,36 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="sidebar">
+    <h3>📖 درس‌ها</h3>
+    <ul id="sidebar-menu"></ul>
+  </div>
+
   <div class="markdown-body">
-    <!-- Markdown gets rendered here -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script>
       fetch('README.md')
         .then(res => res.text())
         .then(md => {
+          // Convert Markdown to HTML
           document.querySelector('.markdown-body').innerHTML = marked.parse(md);
+
+          // Auto-generate sidebar from headings
+          let sidebar = document.getElementById("sidebar-menu");
+          let headings = document.querySelectorAll(".markdown-body h2");
+
+          headings.forEach((heading, index) => {
+            let id = "lesson" + (index + 1);
+            heading.id = id; // Assign ID to each heading
+
+            let link = document.createElement("a");
+            link.href = "#" + id;
+            link.textContent = heading.textContent;
+
+            let listItem = document.createElement("li");
+            listItem.appendChild(link);
+            sidebar.appendChild(listItem);
+          });
         });
     </script>
   </div>
