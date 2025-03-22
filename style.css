@@ -1,15 +1,19 @@
-/* === Body and Layout === */
-body {
-  font-family: sans-serif;
-  line-height: 1.8;
-  background: #f9f9f9;
-  color: #333;
-  margin: 0;
-  direction: rtl;
-  display: flex;
+/* === General Reset === */
+* {
+  box-sizing: border-box;
 }
 
-/* === Sidebar Styling === */
+body {
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  line-height: 1.8;
+  margin: 0;
+  padding: 0;
+  direction: rtl;
+  display: flex;
+  background: linear-gradient(135deg, #f0f4f8, #eaf1f8);
+}
+
+/* === Sidebar === */
 .sidebar {
   position: sticky;
   top: 0;
@@ -17,18 +21,22 @@ body {
   width: 240px;
   overflow-y: auto;
   padding: 20px;
-  background: #ffffff;
-  border-left: 1px solid #ddd;
+  background: #ffffffcc;
+  backdrop-filter: blur(8px);
+  border-left: 1px solid #e0e0e0;
   box-shadow: -2px 0 8px rgba(0, 0, 0, 0.05);
   flex-shrink: 0;
   z-index: 10;
+  border-radius: 0 10px 10px 0;
 }
 
-/* Sidebar contents */
 .sidebar h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
+  font-size: 20px;
+  margin-bottom: 16px;
+  color: #007acc;
   text-align: right;
+  border-bottom: 2px solid #007acc;
+  padding-bottom: 4px;
 }
 
 .sidebar ul {
@@ -38,7 +46,8 @@ body {
 }
 
 .sidebar li {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  transition: all 0.2s ease;
 }
 
 .sidebar a {
@@ -46,24 +55,61 @@ body {
   text-decoration: none;
   font-weight: bold;
   display: block;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background 0.2s ease;
 }
 
 .sidebar a:hover {
-  color: #e76f51;
+  background: #007acc22;
+  color: #005f99;
 }
 
-/* === Markdown Body Styling === */
+/* === Main Content === */
 .markdown-body {
-  max-width: 800px;
-  padding: 40px;
-  background: white;
-  margin: 0 auto;
+  max-width: 850px;
+  padding: 40px 40px 80px;
+  background: #ffffffee;
+  margin: 40px auto;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
   flex-grow: 1;
-  box-sizing: border-box;
 }
 
-h1, h2, h3 {
+/* === Headings === */
+h1, h2, h3, h4 {
   color: #007acc;
   border-bottom: 1px solid #ddd;
-  padding-bottom: 0.2em;
+  padding-bottom: 4px;
+}
+
+h3 {
+  margin-top: 60px;
+}
+
+/* === Lists, Code, Emphasis === */
+ul, ol {
+  padding-right: 20px;
+}
+
+strong {
+  color: #d6336c;
+}
+
+code {
+  background: #f2f2f2;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 90%;
+}
+
+/* === Scrollbar (for sidebar only) === */
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 6px;
 }
