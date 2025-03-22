@@ -1,42 +1,58 @@
+/* === Import Material Font === */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
 /* === General Reset === */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  font-family: "Segoe UI", Tahoma, sans-serif;
+  font-family: 'Roboto', 'Segoe UI', Tahoma, sans-serif;
   line-height: 1.8;
   margin: 0;
   padding: 0;
   direction: rtl;
   display: flex;
-  background: linear-gradient(135deg, #f0f4f8, #eaf1f8);
+  background: linear-gradient(to bottom right, #e3f2fd, #f1f8ff);
+  color: #333;
+}
+
+/* === Layout Container === */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  align-items: flex-start;
 }
 
 /* === Sidebar === */
 .sidebar {
-  position: sticky;
-  top: 0;
-  height: 100vh;
   width: 240px;
+  position: sticky;
+  top: 20px;
+  height: max-content;
   overflow-y: auto;
+  background: #ffffffee;
+  backdrop-filter: blur(6px);
   padding: 20px;
-  background: #ffffffcc;
-  backdrop-filter: blur(8px);
   border-left: 1px solid #e0e0e0;
-  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.05);
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.05);
   flex-shrink: 0;
+  border-radius: 0 12px 12px 0;
   z-index: 1000;
-  border-radius: 0 10px 10px 0;
   transition: transform 0.3s ease-in-out;
 }
 
 .sidebar h3 {
-  font-size: 20px;
+  font-size: 18px;
   margin-bottom: 16px;
-  color: #007acc;
+  color: #1565c0;
   text-align: right;
-  border-bottom: 2px solid #007acc;
+  border-bottom: 2px solid #2196f3;
   padding-bottom: 4px;
 }
 
@@ -48,52 +64,86 @@ body {
 
 .sidebar li {
   margin-bottom: 10px;
-  transition: all 0.2s ease;
 }
 
 .sidebar a {
-  color: #007acc;
+  color: #1565c0;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 500;
   display: block;
-  padding: 6px 10px;
+  padding: 6px 12px;
   border-radius: 6px;
   transition: background 0.2s ease;
 }
 
 .sidebar a:hover {
-  background: #007acc22;
-  color: #005f99;
+  background: #e3f2fd;
+  color: #0d47a1;
 }
 
 /* === Main Content === */
 .markdown-body {
-  max-width: 850px;
+  flex: 1;
   padding: 40px 40px 80px;
-  background: #ffffffee;
-  margin: 40px auto;
+  background: #ffffff;
   border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
-  flex-grow: 1;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 }
 
-/* === Mobile Responsive Design === */
+/* === Typography === */
+h1, h2, h3, h4 {
+  color: #0d47a1;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 6px;
+  margin-top: 40px;
+}
+
+ul, ol {
+  padding-right: 20px;
+}
+
+strong {
+  color: #c62828;
+}
+
+code {
+  background: #f5f5f5;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 90%;
+}
+
+/* === Scrollbar === */
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+.sidebar::-webkit-scrollbar-thumb {
+  background: #bbb;
+  border-radius: 6px;
+}
+
+/* === Responsive (Mobile) === */
 @media (max-width: 1024px) {
   body {
     flex-direction: column;
   }
 
+  .container {
+    flex-direction: column;
+    padding: 0 10px;
+  }
+
   .sidebar {
     position: fixed;
-    right: -250px;
+    right: -270px;
+    top: 0;
     width: 250px;
     height: 100%;
     background: white;
-    border-left: none;
     box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    transition: right 0.3s ease-in-out;
-    z-index: 1000;
+    border-radius: 0;
   }
 
   .sidebar.show {
@@ -104,14 +154,15 @@ body {
     position: fixed;
     top: 10px;
     right: 10px;
-    background: #007acc;
+    background: #1976d2;
     color: white;
     padding: 10px 15px;
     border: none;
     cursor: pointer;
     font-size: 16px;
-    border-radius: 5px;
+    border-radius: 6px;
     z-index: 1100;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   }
 
   .markdown-body {
@@ -121,17 +172,7 @@ body {
   }
 }
 
-/* === Scrollbar (for sidebar only) === */
-.sidebar::-webkit-scrollbar {
-  width: 6px;
-}
-
-.sidebar::-webkit-scrollbar-thumb {
-  background: #ccc;
-  border-radius: 6px;
-}
-
-
+/* === Smooth Scroll === */
 html {
   scroll-behavior: smooth;
   overscroll-behavior: contain;
